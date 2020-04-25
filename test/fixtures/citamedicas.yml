@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  hcita: MyString
+  fcita: 2020-04-25 06:09:58
+  consultorio: MyString
+  paciente: one
+  doctor: one
+
+two:
+  hcita: MyString
+  fcita: 2020-04-25 06:09:58
+  consultorio: MyString
+  paciente: two
+  doctor: two

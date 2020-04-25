@@ -10,19 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_23_084805) do
+ActiveRecord::Schema.define(version: 2020_04_25_110958) do
 
-  create_table "cita", force: :cascade do |t|
+  create_table "citamedicas", force: :cascade do |t|
     t.string "hcita"
     t.datetime "fcita"
     t.string "consultorio"
-    t.integer "doctor_id", null: false
     t.integer "paciente_id", null: false
+    t.integer "doctor_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id"
-    t.index ["doctor_id"], name: "index_cita_on_doctor_id"
-    t.index ["paciente_id"], name: "index_cita_on_paciente_id"
+    t.index ["doctor_id"], name: "index_citamedicas_on_doctor_id"
+    t.index ["paciente_id"], name: "index_citamedicas_on_paciente_id"
   end
 
   create_table "doctors", force: :cascade do |t|
@@ -69,7 +68,7 @@ ActiveRecord::Schema.define(version: 2020_04_23_084805) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "cita", "doctors"
-  add_foreign_key "cita", "pacientes"
+  add_foreign_key "citamedicas", "doctors"
+  add_foreign_key "citamedicas", "pacientes"
   add_foreign_key "historiaclinicas", "pacientes"
 end

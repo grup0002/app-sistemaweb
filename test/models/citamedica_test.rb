@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class CitaTest < ActiveSupport::TestCase
+class CitamedicaTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

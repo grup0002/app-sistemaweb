@@ -1,3 +1,3 @@
 class Doctor < ApplicationRecord
-    has_many :cita
+    has_many :citamedica
 end

@@ -1,0 +1,4 @@
+$('#modalCitamedicas').modal('toggle');
+$('#tablaCitamedicas').append(
+    '<tr id="citamedica_<%= @citamedica.id %>" ><td><%= @citamedica.hcita %></td><td><%= @citamedica.fcita %></td><td><%= @citamedica.consultorio %></td><td><%= @citamedica.paciente != nil ?  #{@citamedica.paciente.dni}"  + " - " +  @citamedica.paciente.nombre  + " " +  @citamedica.paciente.apellido : "No tiene" %></td><td><%= @citamedica.doctor != nil ?  #{@citamedica.doctor.cedula}"  + " - " +  @citamedica.doctor.nombre  + " " +  @citamedica.doctor.apellidopa + " " +  @citamedica.doctor.apellidoma : "No tiene" %></td><td><%= link_to 'editar', edit_citamedica_path(@citamedica), html_options = {class: "btn btn-info btn-xs", remote: true} %> <%= link_to "Borrar", @citamedica, remote: true, method: :delete, data: { confirm: "¿Borrar cita medica: #{@citamedica.consultorio}?"}, class: "btn btn-danger btn-xs" %></td></tr>'
+);

@@ -1,0 +1,41 @@
+<h1 class="h3 mb-2 text-gray-800">Citas Medicas</h1>
+
+<div>  
+  <%= link_to new_citamedica_path, { remote: true, class: "btn btn-info" }  do %>
+    <span class="fas fa-plus-square" ></span>
+  <% end %>
+</div>
+<br />
+<div class="card shadow mb-4">
+<div class="card-body">
+    <div class="table-responsive">
+    <table class="table table-bordered" id="tablaCitamedicas" width="100%" cellspacing="0">
+        <thead>
+        <tr>
+            <th>Hora de la Cita</th>
+            <th>Fecha de la Cita</th>
+            <th>Paciente Atentido</th>
+            <th>Consulta del Paciente</th>
+            <th>Medico del Paciente</th>
+        </tr>
+        </thead>
+        <tbody>
+            <% @citasmedicas.each do |citame| %>
+            <tr id="citamedica_<%= citame.id %>" >
+                <td><%= citame.hcita %></td>
+                <td><%= citame.fcita %></td>
+                <td><%= citame.consultorio %></td>
+                <td><%= citame.paciente != nil ? "#{citame.paciente.dni}"  + " - " +  citame.paciente.nombre  + " " +  citame.paciente.apellido: "No tiene paciente" %></td>
+                <td><%= citame.doctor != nil ? "#{citame.doctor.cedula}"  + " - " +  citame.doctor.nombre  + " " +  citame.doctor.apellidopa  + " " +  citame.doctor.apellidoma: "No tiene paciente" %></td>
+                <td>
+                <%= link_to 'editar', edit_citamedica_path(citame), html_options = {class: "btn btn-info btn-xs", remote: true} %>
+                <%= link_to "Borrar", citame, remote: true, method: :delete, data: { confirm: "¿Esta seguro de borrar cita medica de: #{citame.paciente.nombre} #{citame.paciente.apellido}?"}, class: "btn btn-danger btn-xs" %>
+                </td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+<%= render 'modal_citamedicas' %>
