@@ -1,0 +1,4 @@
+$('#modalPacientes').modal('toggle');
+$('#tablaPacientes').append(
+    '<tr id="paciente_<%= @paciente.id %>" ><td><%= @paciente.dni %></td><td><%= @paciente.nombre %></td><td><%= @paciente.apellido %></td><td><%= @paciente.sexo %></td><td><%= @paciente.telefono %></td><td><%= @paciente.direccion %></td><td><%= link_to 'editar', edit_paciente_path(@paciente), html_options = {class: "btn btn-info btn-xs", remote: true} %> <%= link_to "Borrar", @paciente, remote: true, method: :delete, data: { confirm: "¿Borrar paciente: #{@paciente.nombre}?"}, class: "btn btn-danger btn-xs" %></td></tr>'
+);

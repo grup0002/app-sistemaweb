@@ -1,0 +1,8 @@
+// Add the dialog title
+$('#modal-pacientes-title').html("Nuevo paciente");
+
+// Render the new form
+$('.modal-body-pacientes').html('<%= j render("form") %>');
+ 
+// Show the dynamic dialog
+$('#modalPacientes').modal("show");

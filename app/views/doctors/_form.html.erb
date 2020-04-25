@@ -1,0 +1,80 @@
+<%= form_for @doctor, remote: true do |f| %>
+    <div class="form-group">
+      <h4 class="control-label">Datos de Doctores:</h4>
+    </div>
+
+    <div class="item form-group<%= @doctor.errors[:cedula].any? ? ' has-error has-feedback' : '' %>">
+      <%= f.label :cedula, "cedula del doctor: " %>
+      <div class="input-group">
+        <%= f.text_field :cedula, {:class=> "form-control", :placeholder=>"Introduzca la cedula del doctor..."} %>        
+        <%if @doctor.errors[:cedula].any? %>
+          <p class="bg-danger"><%= @doctor.errors[:cedula].to_s[/\w([^"]*)/] %></p>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="item form-group<%= @doctor.errors[:nombre].any? ? ' has-error has-feedback' : '' %>">
+    <%= f.label :nombre, "Nombre del doctor: " %>
+    <div class="input-group">
+      <%= f.text_field :nombre, {:class=> "form-control", :placeholder=>"Introduzca el nombre del doctor..."} %>        
+      <%if @doctor.errors[:nombre].any? %>
+        <p class="bg-danger"><%= @doctor.errors[:nombre].to_s[/\w([^"]*)/] %></p>
+      <% end %>
+    </div>
+     </div>
+
+     <div class="item form-group<%= @doctor.errors[:apellidopa].any? ? ' has-error has-feedback' : '' %>">
+     <%= f.label :apellidopa, "ap. paterno del doctor: " %>
+     <div class="input-group">
+       <%= f.text_field :apellidopa, {:class=> "form-control", :placeholder=>"Introduzca el ap. paterno del doctor..."} %>        
+       <%if @doctor.errors[:apellidopa].any? %>
+         <p class="bg-danger"><%= @doctor.errors[:apellidopa].to_s[/\w([^"]*)/] %></p>
+       <% end %>    
+     </div>
+      </div>
+
+      <div class="item form-group<%= @doctor.errors[:apellidoma].any? ? ' has-error has-feedback' : '' %>">
+      <%= f.label :apellidoma, "ap. materno del doctor: " %>
+      <div class="input-group">
+        <%= f.text_field :apellidoma, {:class=> "form-control", :placeholder=>"Introduzca el ap. materno del doctor..."} %>        
+        <%if @doctor.errors[:apellidoma].any? %>
+          <p class="bg-danger"><%= @doctor.errors[:apellidoma].to_s[/\w([^"]*)/] %></p>
+        <% end %>    
+      </div>
+       </div>
+
+      <div class="item form-group<%= @doctor.errors[:especialidad].any? ? ' has-error has-feedback' : '' %>">
+      <%= f.label :especialidad, "especialidad del doctor: " %>
+      <div class="input-group">
+        <%= f.text_field :especialidad, {:class=> "form-control", :placeholder=>"Introduzca la especialidad del doctor..."} %>        
+        <%if @doctor.errors[:especialidad].any? %>
+          <p class="bg-danger"><%= @doctor.errors[:especialidad].to_s[/\w([^"]*)/] %></p>
+        <% end %>    
+      </div>
+       </div> 
+
+    <div class="item form-group<%= @doctor.errors[:telefono].any? ? ' has-error has-feedback' : '' %>">
+    <%= f.label :telefono, "telefono del doctor: " %>
+    <div class="input-group">
+      <%= f.text_field :telefono, {:class=> "form-control", :placeholder=>"Introduzca el telefono del doctor..."} %>        
+      <%if @doctor.errors[:telefono].any? %>
+        <p class="bg-danger"><%= @doctor.errors[:telefono].to_s[/\w([^"]*)/] %></p>
+      <% end %>
+    </div>
+     </div>
+
+     <div class="item form-group<%= @doctor.errors[:direccion].any? ? ' has-error has-feedback' : '' %>">
+     <%= f.label :direccion, "direccion deL doctor: " %>
+     <div class="input-group">
+       <%= f.text_field :direccion, {:class=> "form-control", :placeholder=>"Introduzca el direccion del doctor..."} %>        
+       <%if @doctor.errors[:direccion].any? %>
+         <p class="bg-danger"><%= @doctor.errors[:direccion].to_s[/\w([^"]*)/] %></p>
+       <% end %>    
+     </div>
+      </div>
+
+
+    <div class="actions col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+      <%= f.submit @doctor.new_record? ? "Crear Doctor" : "Actualizar Doctor", :class => "btn btn-success"%>
+    </div>  
+<% end %>   

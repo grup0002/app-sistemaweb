@@ -1,0 +1,34 @@
+<h1 class="h3 mb-2 text-gray-800">Historia Clinica</h1>
+<div>  
+  <%= link_to new_historiaclinica_path, { remote: true, class: "btn btn-info" }  do %>
+    <span class="fas fa-plus-square" ></span>
+  <% end %>
+</div>
+<br />
+<div class="card shadow mb-4">
+<div class="card-body">
+    <div class="table-responsive">
+    <table class="table table-bordered" id="tablaHistoriaclinicas" width="100%" cellspacing="0">
+        <thead>
+        <tr>
+            <th>Paciente Atentido</th>
+            <th>Diagnostico del Paciente</th>
+        </tr>
+        </thead>
+        <tbody>
+            <% @historiasclinicas.each do |historia| %>
+            <tr id="historiaclinica_<%= historia.id %>" >
+                <td><%= historia.paciente != nil ? "#{historia.paciente.dni}"  + " - " +  historia.paciente.nombre  + " " +  historia.paciente.apellido: "No tiene paciente" %></td>
+                <td><%= historia.diagnostico %></td>
+                <td>
+                <%= link_to "editar", edit_historiaclinica_path(historia), html_options = {class: "btn btn-info btn-xs", remote: true} %>
+                <%= link_to "Borrar", historia, remote: true, method: :delete, data: { confirm: "¿Esta seguro de borrar historia Clinica de: #{historia.paciente.nombre} #{historia.paciente.apellido}?"}, class: "btn btn-danger btn-xs" %>
+                </td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+<%= render 'modal_historiaclinicas' %>

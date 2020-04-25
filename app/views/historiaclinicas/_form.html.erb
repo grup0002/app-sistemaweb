@@ -1,0 +1,30 @@
+<%= form_for @historiaclinica, { remote: true, multipart: true }  do |f| %>
+
+    <div class="form-group">
+      <h4 class="control-label">Datos de Historias Clinicas:</h4>
+    </div>
+
+    <div class="item form-group<%= @historiaclinica.errors[:paciente].any? ? ' has-error has-feedback' : '' %>">
+      <%= f.label :paciente, "Paciente: " %>
+      <div class="input-group">
+      <%= collection_select(:historiaclinica, :paciente_id, @pacientes, :id, :nombre,  {:prompt => 'Seleccione el paciente'}, { class: "btn btn-secondary dropdown-toggle" })%>
+        <%if @historiaclinica.errors[:paciente].any? %>
+          <p class="bg-danger"><%= @historiaclinica.errors[:paciente].to_s[/\w([^"]*)/] %></p>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="item form-group<%= @historiaclinica.errors[:diagnostico].any? ? ' has-error has-feedback' : '' %>">
+      <%= f.label :diagnostico, "Descripción del diagnostico: " %>
+      <div class="input-group">
+        <%= f.text_area :diagnostico, {class: "form-control", :placeholder=>"Introduzca la descripción del diagnostico..."} %>
+        <%if @historiaclinica.errors[:diagnostico].any? %>
+          <p class="bg-danger"><%= @historiaclinica.errors[:diagnostico].to_s[/\w([^"]*)/] %></p>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="actions col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+      <%= f.submit @historiaclinica.new_record? ? "Crear Historia Clinica" : "Actualizar Historia Clinica", :class => "btn btn-success"%>
+    </div>  
+  <% end %>
