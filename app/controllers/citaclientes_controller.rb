@@ -1,4 +1,4 @@
-class CitamedicasController < ApplicationController
+class CitaclientesController < ApplicationController
   before_action :set_citamedica, only: [:edit, :update, :destroy]
   before_action :set_paciente, only: [:new, :edit, :create]
   before_action :set_doctor, only: [:new, :edit, :create]
